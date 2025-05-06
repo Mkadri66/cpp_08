@@ -6,13 +6,16 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 18:43:00 by mkadri            #+#    #+#             */
-/*   Updated: 2025/01/28 10:38:51 by mkadri           ###   ########.fr       */
+/*   Updated: 2025/05/06 10:33:34 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Span.hpp"
+#include <ctime>
 
-Span::Span(unsigned int n): N(n) {}
+Span::Span(unsigned int n): N(n) {
+	 std::srand(std::time(0));
+}
 
 Span::Span(Span const& copy) {
 	*this=copy;
@@ -64,6 +67,9 @@ int	Span::shortestSpan() {
 void	Span::addRange() {
 	if (N == 0)
 		throw std::out_of_range("Container is empty");
+    if (_container.size() + N > _container.max_size()) {
+        throw std::out_of_range("Container already full");
+    }
 	for (unsigned int i = 0; i < N; i++)
 		_container.push_back(rand() % N);
 }
