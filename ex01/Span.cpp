@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 18:43:00 by mkadri            #+#    #+#             */
-/*   Updated: 2025/05/06 11:24:01 by mkadri           ###   ########.fr       */
+/*   Updated: 2025/05/07 15:41:05 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	Span::shortestSpan() {
 	std::vector<int>::const_iterator next_it = it;
 	++next_it;
 
-	for (; next_it != _container.end(); ++next_it) {
+	for (; next_it != _container.end(); ++next_it; i++) {
 		int	diff = *next_it - *it;
 		if (diff < result)
 			result = diff;
