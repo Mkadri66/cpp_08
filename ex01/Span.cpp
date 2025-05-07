@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 18:43:00 by mkadri            #+#    #+#             */
-/*   Updated: 2025/05/06 10:33:34 by mkadri           ###   ########.fr       */
+/*   Updated: 2025/05/06 11:24:01 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <ctime>
 
 Span::Span(unsigned int n): N(n) {
-	 std::srand(std::time(0));
+	std::srand(std::time(0));
 }
 
 Span::Span(Span const& copy) {
@@ -33,6 +33,7 @@ Span&	Span::operator=(Span const& rhs) {
 unsigned int	Span::getN() const {
 	return this->N;
 }
+
 
 void	Span::addNumber(int nb) {
 	if (_container.size() < N) {
@@ -67,9 +68,9 @@ int	Span::shortestSpan() {
 void	Span::addRange() {
 	if (N == 0)
 		throw std::out_of_range("Container is empty");
-    if (_container.size() + N > _container.max_size()) {
+    if (_container.size() == N) {
         throw std::out_of_range("Container already full");
     }
-	for (unsigned int i = 0; i < N; i++)
+	for (unsigned int i = _container.size(); i < N; i++)
 		_container.push_back(rand() % N);
 }
